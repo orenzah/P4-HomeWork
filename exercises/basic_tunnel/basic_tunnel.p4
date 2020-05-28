@@ -208,6 +208,7 @@ control MyDeparser(packet_out packet, in headers hdr) {
     apply {
         packet.emit(hdr.ethernet);
         // TODO: emit myTunnel header as well
+		packet.emit(hdr.myTunnel);
         packet.emit(hdr.ipv4);
     }
 }
