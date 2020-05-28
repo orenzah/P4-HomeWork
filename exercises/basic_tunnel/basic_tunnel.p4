@@ -138,6 +138,19 @@ control MyIngress(inout headers hdr,
 	}
 
     // TODO: declare a new table: myTunnel_exact
+	table myTunnel_exact {
+		key = {
+			hdr.myTunnel.dst_id: lpm;
+		}
+		actions = {
+			myTunnel_forward;
+			drop;
+			NoAction;
+		}
+		size = 1024;
+		default_action = NoAction()
+	}
+	
     // TODO: also remember to add table entries!
 
 
