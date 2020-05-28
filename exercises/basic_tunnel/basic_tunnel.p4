@@ -156,7 +156,11 @@ control MyIngress(inout headers hdr,
 
     apply {
         // TODO: Update control flow
-        if (hdr.ipv4.isValid()) {
+		if (hdr.myTunnel.isValid())
+		{
+			myTunnel_exact.apply();
+		}
+        else if (hdr.ipv4.isValid()) {
             ipv4_lpm.apply();
         }
     }
