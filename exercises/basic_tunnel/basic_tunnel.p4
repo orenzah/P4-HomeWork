@@ -80,8 +80,11 @@ parser MyParser(packet_in packet,
         transition accept;
     }
     state parse_myTunnel {
-        packet.extract(hdr.ipv4);
-        transition accept;
+        packet.extract(hdr.myTunnel);
+	transition select(hdr.myTunnel.proto_id) {
+		TYPE_IPV4 : parse_ipv4;
+		default : accept;
+	}
     }
 
 
