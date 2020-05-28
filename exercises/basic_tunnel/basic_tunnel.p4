@@ -70,6 +70,7 @@ parser MyParser(packet_in packet,
         packet.extract(hdr.ethernet);
         transition select(hdr.ethernet.etherType) {
             TYPE_IPV4 : parse_ipv4;
+            TYPE_MYTUNNEL : parse_myTunnel;
             default : accept;
         }
     }
@@ -78,6 +79,11 @@ parser MyParser(packet_in packet,
         packet.extract(hdr.ipv4);
         transition accept;
     }
+    state parse_myTunnel {
+        packet.extract(hdr.ipv4);
+        transition accept;
+    }
+
 
 
 }
