@@ -81,10 +81,10 @@ parser MyParser(packet_in packet,
     }
     state parse_myTunnel {
         packet.extract(hdr.myTunnel);
-	transition select(hdr.myTunnel.proto_id) {
-		TYPE_IPV4 : parse_ipv4;
-		default : accept;
-	}
+		transition select(hdr.myTunnel.proto_id) {
+			TYPE_IPV4 : parse_ipv4;
+			default : accept;
+		}
     }
 
 
@@ -140,7 +140,7 @@ control MyIngress(inout headers hdr,
     // DONE: declare a new table: myTunnel_exact
 	table myTunnel_exact {
 		key = {
-			hdr.myTunnel.dst_id: lpm;
+			hdr.myTunnel.dst_id: exact;
 		}
 		actions = {
 			myTunnel_forward;
