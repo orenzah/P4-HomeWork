@@ -131,13 +131,13 @@ control MyIngress(inout headers hdr,
         default_action = NoAction();
     }
 
-    // TODO: declare a new action: myTunnel_forward(egressSpec_t port)
+    // DONE: declare a new action: myTunnel_forward(egressSpec_t port)
     action myTunnel_forward(egressSpec_t port)
 	{
 		standard_metadata.egress_spec = port;    
 	}
 
-    // TODO: declare a new table: myTunnel_exact
+    // DONE: declare a new table: myTunnel_exact
 	table myTunnel_exact {
 		key = {
 			hdr.myTunnel.dst_id: lpm;
@@ -151,11 +151,11 @@ control MyIngress(inout headers hdr,
 		default_action = NoAction()
 	}
 	
-    // TODO: also remember to add table entries!
+    // DONE: also remember to add table entries!
 
 
     apply {
-        // TODO: Update control flow
+        // DONE: Update control flow
 		if (hdr.myTunnel.isValid())
 		{
 			myTunnel_exact.apply();
@@ -207,7 +207,7 @@ control MyComputeChecksum(inout headers  hdr, inout metadata meta) {
 control MyDeparser(packet_out packet, in headers hdr) {
     apply {
         packet.emit(hdr.ethernet);
-        // TODO: emit myTunnel header as well
+        // DONE: emit myTunnel header as well
 		packet.emit(hdr.myTunnel);
         packet.emit(hdr.ipv4);
     }
