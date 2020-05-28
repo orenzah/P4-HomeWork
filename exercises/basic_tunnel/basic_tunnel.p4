@@ -148,7 +148,7 @@ control MyIngress(inout headers hdr,
 			NoAction;
 		}
 		size = 1024;
-		default_action = NoAction()
+		default_action = NoAction();
 	}
 	
     // DONE: also remember to add table entries!
