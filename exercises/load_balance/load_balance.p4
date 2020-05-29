@@ -102,13 +102,13 @@ control MyIngress(inout headers hdr,
         mark_to_drop(standard_metadata);
     }
     action set_ecmp_select(bit<16> ecmp_base, bit<32> ecmp_count) {
-        /* TODO: hash on 5-tuple and save the hash result in meta.ecmp_select 
+        /* DONE: hash on 5-tuple and save the hash result in meta.ecmp_select 
            so that the ecmp_nhop table can use it to make a forwarding decision accordingly */
-		// TODO
+		// DONE
 		// Hash ip_src, ip_dst, ip_proto, tcp_port_src, tcp_port_dst
 		hash(
 			meta.ecmp_select,
-			HashAlgorithm.xor16,
+			HashAlgorithm.csum16,
 			ecmp_base,
 			{
 				hdr.ipv4.srcAddr,
