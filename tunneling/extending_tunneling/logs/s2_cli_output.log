@@ -1,0 +1,39 @@
+Obtaining JSON from switch...
+Done
+Control utility for runtime P4 table manipulation
+RuntimeCmd: Adding entry to lpm match table ipv4_lpm
+match key:           LPM-0a:00:01:01/32
+action:              myTunnel_ingress
+runtime data:        00:02
+Entry has been added with handle 0
+RuntimeCmd: Adding entry to exact match table myTunnel_exact
+match key:           EXACT-00:02
+action:              myTunnel_forward
+runtime data:        00:02
+Entry has been added with handle 0
+RuntimeCmd: Adding entry to exact match table myTunnel_exact
+match key:           EXACT-00:02
+action:              myTunnel_egress
+runtime data:        00:00:00:00:02:02	00:01
+Invalid table operation (DUPLICATE_ENTRY)
+RuntimeCmd: Adding entry to exact match table myTunnel_exact
+match key:           EXACT-00:02
+action:              myTunnel_egress
+runtime data:        00:00:00:00:02:02	00:01
+Invalid table operation (DUPLICATE_ENTRY)
+RuntimeCmd: Adding entry to exact match table myTunnel_exact
+match key:           EXACT-00:02
+action:              myTunnel_egress
+runtime data:        00:00:00:00:02:02	00:01
+Invalid table operation (DUPLICATE_ENTRY)
+RuntimeCmd: Adding entry to exact match table myTunnel_exact
+match key:           EXACT-00:02
+action:              myTunnel_egress
+runtime data:        00:00:00:00:02:02	00:01
+Invalid table operation (DUPLICATE_ENTRY)
+RuntimeCmd: Adding entry to exact match table myTunnel_exact
+match key:           EXACT-00:02
+action:              myTunnel_egress
+runtime data:        00:00:00:00:02:02	00:01
+Invalid table operation (DUPLICATE_ENTRY)
+RuntimeCmd: 

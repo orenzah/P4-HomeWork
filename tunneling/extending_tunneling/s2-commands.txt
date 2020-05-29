@@ -1,0 +1,7 @@
+table_add ipv4_lpm myTunnel_ingress 10.0.1.1/32 => 2
+table_add myTunnel_exact myTunnel_forward 2 => 2
+table_add myTunnel_exact myTunnel_egress 2 => 00:00:00:00:02:02 1
+
+
+
+
