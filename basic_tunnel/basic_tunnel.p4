@@ -154,14 +154,16 @@ control MyIngress(inout headers hdr,
     // DONE: also remember to add table entries!
 
 
-    apply {
-        // DONE: Update control flow
-		if (hdr.myTunnel.isValid())
-		{
-			myTunnel_exact.apply();
-		}
-        else if (hdr.ipv4.isValid()) {
+    apply 
+    {
+        if (hdr.ipv4.isValid() && !hdr.myTunnel.isValid()) 
+        {
             ipv4_lpm.apply();
+        }
+
+        if (hdr.myTunnel.isValid()) 
+        {
+            myTunnel_exact.apply();
         }
     }
 }
